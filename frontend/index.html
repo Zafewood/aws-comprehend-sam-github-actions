@@ -90,12 +90,19 @@
 
     function renderResult(data) {
       const scores = data.sentimentScore;
+      const toxicity = data.toxicity;
       result.className = "";
-      result.innerHTML = `<div class="kicker">Detected sentiment</div><div class="result-value">${data.sentiment}</div>` +
-        labels.map((label) => {
+      const sentimentText = data.sentiment || "Not available for this language";
+      const toxicityText = toxicity.supported
+        ? `${toxicity.isToxic ? "Toxic" : "Not toxic"} (${(toxicity.score * 100).toFixed(1)}%)`
+        : "Not available for this language";
+      result.innerHTML = `<div class="kicker">Language</div><div class="result-value">${data.language.LanguageCode.toUpperCase()}</div>` +
+        `<div class="kicker">Detected sentiment</div><div class="result-value">${sentimentText}</div>` +
+        `<div class="kicker">Toxicity</div><div class="result-value">${toxicityText}</div>` +
+        (scores ? labels.map((label) => {
           const score = Number(scores[label] || 0);
           return `<div class="score"><span>${label}</span><span class="track"><span class="fill" style="width: ${score * 100}%"></span></span><span class="number">${(score * 100).toFixed(1)}%</span></div>`;
-        }).join("");
+        }).join("") : "");
     }
 
     async function analyze() {
