@@ -29,7 +29,7 @@ Resources:
     Properties:
       StageName: Prod
       CorsConfiguration:
-        AllowOrigin: "'http://localhost:8000'"
+        AllowOrigin: "'https://legendary-rotary-phone-jq5prg6ggpw359x9-8000.app.github.dev'"
         AllowMethods: "'POST,OPTIONS'"
         AllowHeaders: "'Content-Type'"
 

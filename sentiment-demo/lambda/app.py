@@ -19,7 +19,7 @@ def handler(event, context):
             "statusCode": 400,
             "headers": {
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "http://localhost:8000"
+                "Access-Control-Allow-Origin": "https://legendary-rotary-phone-jq5prg6ggpw359x9-8000.app.github.dev"
             },
             "body": json.dumps({"error": "text is required"})
         }
@@ -49,7 +49,7 @@ def handler(event, context):
         "statusCode": 200,
         "headers": {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "http://localhost:8000"
+            "Access-Control-Allow-Origin": "https://legendary-rotary-phone-jq5prg6ggpw359x9-8000.app.github.dev"
         },
         "body": json.dumps({
             "language": language,
