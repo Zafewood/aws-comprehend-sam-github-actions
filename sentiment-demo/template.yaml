@@ -23,6 +23,12 @@ Resources:
             Path: /sentiment
             Method: post
             RestApiId: !Ref ServerlessRestApi
+        Options:
+          Type: Api
+          Properties:
+            Path: /sentiment
+            Method: options
+            RestApiId: !Ref ServerlessRestApi
 
   ServerlessRestApi:
     Type: AWS::Serverless::Api

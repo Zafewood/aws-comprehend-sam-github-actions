@@ -28,7 +28,7 @@ jobs:
           sam deploy \
             --no-confirm-changeset \
             --no-fail-on-empty-changeset \
-            --stack-name sam-sentiment-${{ github.actor }} \
+            --stack-name sam-sentiment-tno \
             --resolve-s3 \
             --capabilities CAPABILITY_IAM \
             --region eu-west-1
