@@ -17,7 +17,10 @@ def handler(event, context):
     if not text:
         return {
             "statusCode": 400,
-            "headers": {"Content-Type": "application/json"},
+            "headers": {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "http://localhost:8000"
+            },
             "body": json.dumps({"error": "text is required"})
         }
 
@@ -44,7 +47,10 @@ def handler(event, context):
 
     return {
         "statusCode": 200,
-        "headers": {"Content-Type": "application/json"},
+        "headers": {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "http://localhost:8000"
+        },
         "body": json.dumps({
             "language": language,
             "sentiment": sentiment["Sentiment"] if sentiment else None,

@@ -28,7 +28,7 @@ Resources:
     Type: AWS::Serverless::Api
     Properties:
       StageName: Prod
-      Cors:
+      CorsConfiguration:
         AllowOrigin: "'http://localhost:8000'"
         AllowMethods: "'POST,OPTIONS'"
         AllowHeaders: "'Content-Type'"
