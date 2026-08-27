@@ -22,6 +22,16 @@ Resources:
           Properties:
             Path: /sentiment
             Method: post
+            RestApiId: !Ref ServerlessRestApi
+
+  ServerlessRestApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Prod
+      Cors:
+        AllowOrigin: "'http://localhost:8000'"
+        AllowMethods: "'POST,OPTIONS'"
+        AllowHeaders: "'Content-Type'"
 
   LambdaRole:
     Type: 'AWS::IAM::Role'
