@@ -7,6 +7,15 @@ SENTIMENT_LANGUAGES = {
 
 def handler(event, context):
 
+    cors_headers = {
+        "Access-Control-Allow-Origin": "https://legendary-rotary-phone-jq5prg6ggpw359x9-8000.app.github.dev",
+        "Access-Control-Allow-Methods": "POST,OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type"
+    }
+    request_method = event.get("httpMethod") or event.get("requestContext", {}).get("http", {}).get("method")
+    if request_method and request_method.upper() == "OPTIONS":
+        return {"statusCode": 204, "headers": cors_headers, "body": ""}
+
     client = boto3.client('comprehend')
     try:
         request = json.loads(event.get("body") or "{}")
@@ -19,7 +28,7 @@ def handler(event, context):
             "statusCode": 400,
             "headers": {
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "https://legendary-rotary-phone-jq5prg6ggpw359x9-8000.app.github.dev"
+                **cors_headers
             },
             "body": json.dumps({"error": "text is required"})
         }
@@ -49,7 +58,7 @@ def handler(event, context):
         "statusCode": 200,
         "headers": {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "https://legendary-rotary-phone-jq5prg6ggpw359x9-8000.app.github.dev"
+            **cors_headers
         },
         "body": json.dumps({
             "language": language,
